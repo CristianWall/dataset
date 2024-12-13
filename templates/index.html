@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predicción de Contratación</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 flex items-center justify-center min-h-screen">
+
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg">
+        <h1 class="text-3xl font-semibold text-center text-blue-600 mb-8">Formulario de Predicción</h1>
+        
+        <form method="POST">
+            <div class="space-y-6">
+                <div>
+                    <label for="ubigeo_postulante" class="block text-sm font-medium text-gray-700">UBIGEO POSTULANTE:</label>
+                    <input type="text" id="ubigeo_postulante" name="ubigeo_postulante" class="mt-2 p-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" required>
+                </div>
+
+                <div>
+                    <label for="edad" class="block text-sm font-medium text-gray-700">EDAD:</label>
+                    <input type="text" id="edad" name="edad" class="mt-2 p-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" required>
+                </div>
+
+                <div>
+                    <label for="pais" class="block text-sm font-medium text-gray-700">PAIS:</label>
+                    <select id="pais" name="pais" class="mt-2 p-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" required>
+                        <option value="36">Perú</option>
+                        <option value="999">Otro</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="ubigeo_empresa" class="block text-sm font-medium text-gray-700">UBIGEO EMPRESA:</label>
+                    <input type="text" id="ubigeo_empresa" name="ubigeo_empresa" class="mt-2 p-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" required>
+                </div>
+
+                <div>
+                    <label for="edad_minima" class="block text-sm font-medium text-gray-700">EDAD MÍNIMA PARA EL TRABAJO:</label>
+                    <input type="text" id="edad_minima" name="edad_minima" class="mt-2 p-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" required>
+                </div>
+
+                <div>
+                    <label for="edad_maxima" class="block text-sm font-medium text-gray-700">EDAD MÁXIMA PARA EL TRABAJO:</label>
+                    <input type="text" id="edad_maxima" name="edad_maxima" class="mt-2 p-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" required>
+                </div>
+
+                <div>
+                    <label for="vacantes" class="block text-sm font-medium text-gray-700">NÚMERO DE VACANTES:</label>
+                    <input type="text" id="vacantes" name="vacantes" class="mt-2 p-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" required>
+                </div>
+
+                <div>
+                    <label for="postulantes" class="block text-sm font-medium text-gray-700">NÚMERO DE POSTULANTES:</label>
+                    <input type="text" id="postulantes" name="postulantes" class="mt-2 p-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" required>
+                </div>
+
+                <div>
+                    <label for="sexo_varon" class="block text-sm font-medium text-gray-700">SEXO VARÓN:</label>
+                    <input type="text" id="sexo_varon" name="sexo_varon" class="mt-2 p-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" required>
+                </div>
+
+                <div>
+                    <label for="sexo_mujer" class="block text-sm font-medium text-gray-700">SEXO MUJER:</label>
+                    <input type="text" id="sexo_mujer" name="sexo_mujer" class="mt-2 p-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" required>
+                </div>
+
+                <div>
+                    <label for="sexo_solicitud_varon" class="block text-sm font-medium text-gray-700">SEXO SOLICITUD VARÓN:</label>
+                    <input type="text" id="sexo_solicitud_varon" name="sexo_solicitud_varon" class="mt-2 p-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" required>
+                </div>
+
+                <div>
+                    <label for="sexo_solicitud_mujer" class="block text-sm font-medium text-gray-700">SEXO SOLICITUD MUJER:</label>
+                    <input type="text" id="sexo_solicitud_mujer" name="sexo_solicitud_mujer" class="mt-2 p-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" required>
+                </div>
+
+                <div>
+                    <label for="sexo_solicitud_no_requiere" class="block text-sm font-medium text-gray-700">SEXO SOLICITUD NO REQUIERE:</label>
+                    <input type="text" id="sexo_solicitud_no_requiere" name="sexo_solicitud_no_requiere" class="mt-2 p-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" required>
+                </div>
+
+                <div class="text-center mt-6">
+                    <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition">Predecir</button>
+                </div>
+            </div>
+        </form>
+
+        {% if prediction is not none %}
+        <div class="mt-6">
+            <h2 class="text-xl font-semibold text-center text-blue-600">Resultado de la Predicción:</h2>
+            <p class="text-center">Clase predicha (¿Contratado?): {{ prediction }}</p>
+            <p class="text-center">Probabilidad: {{ probability }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
